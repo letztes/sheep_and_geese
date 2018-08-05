@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"> 
+	<head>
+	<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+	</style>
+	</head>
+	<body>
+		<table id="thetable">
+			<tr>
+				<th>Anmimals</th>
+				<th>Feet</th>
+				<th>Sheep</th>
+				<th>Geese</th>
+			</tr>
+			<tr>
+				<td id="animals"></td>
+				<td id="feet"></td>
+				<td><input id="sheep" type="text" maxlength="3" size="3" oninput="check_result()"></td>
+				<td><input id="geese" type="text" maxlength="3" size="3" oninput="check_result()"></td>
+			</tr>
+		</table>
+		<p id="result">Not yet solved.</p>
+	</body>
+	<script>
+		var sheep = Math.floor((Math.random() * 10) + 1);
+		var geese = Math.floor((Math.random() * 10) + 1);
+		var animals = sheep + geese;
+		var feet = sheep * 4 + geese * 2;
+		
+		document.getElementById("animals").innerHTML = animals;
+		document.getElementById("feet").innerHTML = feet;
+		
+		function check_result() {
+			var amount_sheep = parseInt(document.getElementById("sheep").value);
+			var amount_geese = parseInt(document.getElementById("geese").value);
+			if ((amount_sheep + amount_geese == animals) && (amount_geese * 2 + amount_sheep * 4 == feet)) {
+				document.getElementById("result").innerHTML = "Correct.";
+			}
+			else  {
+				document.getElementById("result").innerHTML = "Wrong.";
+			}
+		}
+	</script>
+</html>
